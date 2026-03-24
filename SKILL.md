@@ -17,13 +17,13 @@ Transform content into professional slide deck images.
 ## Usage
 
 ```bash
-/baoyu-slide-deck path/to/content.md
-/baoyu-slide-deck path/to/content.md --style sketch-notes
-/baoyu-slide-deck path/to/content.md --audience executives
-/baoyu-slide-deck path/to/content.md --lang zh
-/baoyu-slide-deck path/to/content.md --slides 10
-/baoyu-slide-deck path/to/content.md --outline-only
-/baoyu-slide-deck  # Then paste content
+/shortart-ppt-generator path/to/content.md
+/shortart-ppt-generator path/to/content.md --style sketch-notes
+/shortart-ppt-generator path/to/content.md --audience executives
+/shortart-ppt-generator path/to/content.md --lang zh
+/shortart-ppt-generator path/to/content.md --slides 10
+/shortart-ppt-generator path/to/content.md --outline-only
+/shortart-ppt-generator  # Then paste content
 ```
 
 ## Script Directory
@@ -138,7 +138,7 @@ See `references/layouts.md` for layout options.
 
 **Base Directory**: `{baseDir}/slide-deck/{topic-slug}/`
 
-Where `{baseDir}` is the baoyu-slide-deck skill directory (e.g., `~/.claude/skills/baoyu-slide-deck`).
+Where `{baseDir}` is the shortart-ppt-generator skill directory (e.g., `~/.claude/skills/shortart-ppt-generator`).
 
 ```
 {baseDir}/slide-deck/{topic-slug}/
@@ -206,25 +206,25 @@ Check EXTEND.md existence (priority order):
 
 ```bash
 # macOS, Linux, WSL, Git Bash
-test -f .baoyu-skills/baoyu-slide-deck/EXTEND.md && echo "project"
-test -f "${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/baoyu-slide-deck/EXTEND.md" && echo "xdg"
-test -f "$HOME/.baoyu-skills/baoyu-slide-deck/EXTEND.md" && echo "user"
+test -f .baoyu-skills/shortart-ppt-generator/EXTEND.md && echo "project"
+test -f "${XDG_CONFIG_HOME:-$HOME/.config}/baoyu-skills/shortart-ppt-generator/EXTEND.md" && echo "xdg"
+test -f "$HOME/.baoyu-skills/shortart-ppt-generator/EXTEND.md" && echo "user"
 ```
 
 ```powershell
 # PowerShell (Windows)
-if (Test-Path .baoyu-skills/baoyu-slide-deck/EXTEND.md) { "project" }
+if (Test-Path .baoyu-skills/shortart-ppt-generator/EXTEND.md) { "project" }
 $xdg = if ($env:XDG_CONFIG_HOME) { $env:XDG_CONFIG_HOME } else { "$HOME/.config" }
-if (Test-Path "$xdg/baoyu-skills/baoyu-slide-deck/EXTEND.md") { "xdg" }
-if (Test-Path "$HOME/.baoyu-skills/baoyu-slide-deck/EXTEND.md") { "user" }
+if (Test-Path "$xdg/baoyu-skills/shortart-ppt-generator/EXTEND.md") { "xdg" }
+if (Test-Path "$HOME/.baoyu-skills/shortart-ppt-generator/EXTEND.md") { "user" }
 ```
 
 ┌──────────────────────────────────────────────────┬───────────────────┐
 │                       Path                       │     Location      │
 ├──────────────────────────────────────────────────┼───────────────────┤
-│ .baoyu-skills/baoyu-slide-deck/EXTEND.md         │ Project directory │
+│ .baoyu-skills/shortart-ppt-generator/EXTEND.md         │ Project directory │
 ├──────────────────────────────────────────────────┼───────────────────┤
-│ $HOME/.baoyu-skills/baoyu-slide-deck/EXTEND.md   │ User home         │
+│ $HOME/.baoyu-skills/shortart-ppt-generator/EXTEND.md   │ User home         │
 └──────────────────────────────────────────────────┴───────────────────┘
 
 **When EXTEND.md Found** → Read, parse, **output summary to user**:
@@ -633,7 +633,7 @@ PDF: {topic-slug}.pdf
 Generate outline and prompts without images:
 
 ```bash
-/baoyu-slide-deck content.md --prompts-only
+/shortart-ppt-generator content.md --prompts-only
 ```
 
 Output: `outline.md` + `prompts/*.md` ready for review/editing.
@@ -643,7 +643,7 @@ Output: `outline.md` + `prompts/*.md` ready for review/editing.
 Generate images from existing prompts (starts at Step 7):
 
 ```bash
-/baoyu-slide-deck slide-deck/topic-slug/ --images-only
+/shortart-ppt-generator slide-deck/topic-slug/ --images-only
 ```
 
 Prerequisites:
@@ -656,10 +656,10 @@ Regenerate specific slides:
 
 ```bash
 # Single slide
-/baoyu-slide-deck slide-deck/topic-slug/ --regenerate 3
+/shortart-ppt-generator slide-deck/topic-slug/ --regenerate 3
 
 # Multiple slides
-/baoyu-slide-deck slide-deck/topic-slug/ --regenerate 2,5,8
+/shortart-ppt-generator slide-deck/topic-slug/ --regenerate 2,5,8
 ```
 
 Flow:
@@ -680,7 +680,7 @@ Flow:
 ### Edit Single Slide
 
 1. **Update prompt file FIRST** in `prompts/NN-slide-{slug}.md`
-2. Run: `/baoyu-slide-deck <dir> --regenerate N`
+2. Run: `/shortart-ppt-generator <dir> --regenerate N`
 3. Or manually regenerate image to `slides/` directory + PDF
 
 **IMPORTANT**: When updating slides, ALWAYS update the prompt file (`prompts/NN-slide-{slug}.md`) FIRST before regenerating. This ensures changes are documented and reproducible. Images are saved to `slides/` directory.
