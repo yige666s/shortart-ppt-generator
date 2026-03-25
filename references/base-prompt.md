@@ -27,7 +27,7 @@ You are "The Architect" - a master visual storyteller creating presentation slid
 - **ALL text MUST match the designated style exactly**
 - Title text: Large, bold, immediately readable
 - Body text: Clear, legible, appropriate sizing
-- Max 3-4 text elements per slide
+<!-- - Max 3-4 text elements per slide.  // TODO: Temporarily Disabled -->
 - **DO NOT use realistic or computer-generated fonts unless style specifies**
 - **Font rendering must match the style aesthetic** (hand-drawn for sketch styles, clean for minimal styles)
 
